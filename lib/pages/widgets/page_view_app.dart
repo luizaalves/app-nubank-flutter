@@ -9,7 +9,9 @@ class PageViewApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return Positioned( // qual posição a widget vai ficar no stack
+    return AnimatedPositioned( // qual posição a widget vai ficar no stack
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeOut,
       top: top,
       height: MediaQuery.of(context).size.height*0.45,
       left: 0,
