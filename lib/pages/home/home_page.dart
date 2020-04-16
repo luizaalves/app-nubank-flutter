@@ -47,10 +47,7 @@ class _HomePageState extends State<HomePage> {
               });
             },  
           ),
-          Positioned(
-            top: _screenHeight*0.7,
-            child: MyDocsApp(currentIndex: _currentIndex,)
-          )//a vizualização de em qual card está navegando atualmente
+          MyDocsApp(currentIndex: _currentIndex,top: _screenHeight*.7)//a vizualização de em qual card está navegando atualmente
         ],
       ),
     );
