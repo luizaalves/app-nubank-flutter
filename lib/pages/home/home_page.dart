@@ -15,12 +15,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool _showMenu;
   int _currentIndex;
+  double _yposition;
 
   @override
   void initState() {
     super.initState();
     _showMenu = false;
     _currentIndex = 0;
+    _yposition = 0;
   }
 
   @override
@@ -39,15 +41,25 @@ class _HomePageState extends State<HomePage> {
               });
             },
           ),
+          
           PageViewApp( //os cards que deslizam horizontalmente
-            top: _screenHeight*0.24,
-            onChanged: (index){ //esse index pega a pagina atual e muda o card
-              setState(() {
-                _currentIndex = index;
-              });
-            },  
-          ),
-          MyDocsApp(currentIndex: _currentIndex,top: _screenHeight*.7)//a vizualização de em qual card está navegando atualmente
+              top: _yposition,//_showMenu ? _screenHeight*0.24 : _screenHeight*.75,
+              onChanged: (index){ //esse index pega a pagina atual e muda o card
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+              onPanUpdate: (details){
+                setState(() {
+                  _yposition += details.delta.dy;
+                });
+                
+              }
+            ),
+          MyDocsApp(
+            currentIndex: _currentIndex,
+            top: _screenHeight*.7
+          )//a vizualização de em qual card está navegando atualmente
         ],
       ),
     );
