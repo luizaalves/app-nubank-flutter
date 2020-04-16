@@ -1,6 +1,6 @@
 # nubank
 
-A new Flutter project.
+<img src="./assets/tela-nubank.png" alt="Tela" style="zoom:25%;" />
 
 ## Getting Started
 
