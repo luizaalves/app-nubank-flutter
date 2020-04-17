@@ -5,8 +5,9 @@ class PageViewApp extends StatelessWidget {
   final double top;
   final ValueChanged<int> onChanged;
   final GestureDragUpdateCallback onPanUpdate;
+  final bool showMenu;
 
-  const PageViewApp({Key key, this.top, this.onChanged, this.onPanUpdate}) : super(key: key);
+  const PageViewApp({Key key, this.top, this.onChanged, this.onPanUpdate, this.showMenu}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -19,15 +20,15 @@ class PageViewApp extends StatelessWidget {
       right: 0,
       child: GestureDetector(
         onPanUpdate: onPanUpdate,
-              child: PageView(
+        child: PageView(
           onPageChanged: onChanged,
           physics: BouncingScrollPhysics(), //efeito elastivo quando puxa lateralmente
-            children: <Widget>[
-              CardApp(),
-              CardApp(),
-              CardApp()                  
-            ],
-          ),
+          children: <Widget>[
+            CardApp(),
+            CardApp(),
+            CardApp()                  
+          ],
+        ),
       ),
     );
   }
